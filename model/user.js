@@ -18,12 +18,18 @@ const userSchema = new mongoose.Schema({
       required:true,
    },
    gender:{
-      true:String,
+      type:String,
       required:true
    },
    createdAt:{
-      true:String,
+      type:Date,
       required:true,
+      default:Date.now()
+   },
+   role:{
+      type:String,
+      required:true,
+      default:'user',
    }
 
 })

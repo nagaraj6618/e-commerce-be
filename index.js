@@ -5,6 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const userRouter = require('./route/user.js')
 const PORT = process.env.PORT || 8000;
 dotenv.config();
 const corsOption = {
@@ -34,10 +35,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 connectDb()
 
+
+//Get method for checking the status of the server
 app.get('/api/v1/', (req,res)=> {
    res.status(200).json({message:"Working...",db:isDBConnected});
 })
 
+//routers
+app.use('/api/v1/auth',userRouter);
 
 
 
